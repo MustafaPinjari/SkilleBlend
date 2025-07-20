@@ -1,0 +1,18 @@
+# Core Django
+Django==4.2.7
+djangorestframework==3.14.0
+
+# CORS and Authentication
+django-cors-headers==4.3.1
+django-allauth==0.57.0
+dj-rest-auth==5.0.2
+
+# Configuration and utilities
+python-decouple==3.8
+requests==2.31.0
+Pillow==10.1.0
+django-extensions==3.2.3
+
+# Production server
+gunicorn==21.2.0
+whitenoise==6.6.0
