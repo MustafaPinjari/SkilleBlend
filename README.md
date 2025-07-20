@@ -94,16 +94,16 @@ A modern, AI-powered accessibility widget that enhances web accessibility with r
 ## 📸 Screenshots
 
 ### Main Interface
-![Main Interface](/public/light.jpeg)
+![Main Interface](./public/light.jpeg)
 
 ### Settings Panel
-![Settings Panel](/public/setting.png)
+![Settings Panel](./public/setting.png)
 
 ### Dark Mode
-![Dark Mode](/public/Dark.jpeg)
+![Dark Mode](./public/Dark.jpeg)
 
 ### Authentication
-![Authentication](/public/auth.png)
+![Authentication].(/public/auth.png)
 
 ## 🛠️ Built With
 
