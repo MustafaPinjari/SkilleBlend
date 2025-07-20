@@ -103,7 +103,7 @@ A modern, AI-powered accessibility widget that enhances web accessibility with r
 ![Dark Mode](./public/Dark.jpeg)
 
 ### Authentication
-![Authentication].(/public/auth.png)
+![Authentication](/public/auth.png)
 
 ## 🛠️ Built With
 
