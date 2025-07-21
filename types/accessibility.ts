@@ -1,30 +1,44 @@
 import type React from "react"
 
+export type CursorStyle = 'default' | 'large' | 'extra-large' | 'high-contrast'
+export type TooltipMode = 'hover' | 'always' | 'focus' | 'click'
+export type AnimationLevel = 'full' | 'reduced' | 'none'
+
 export interface AccessibilitySettings {
   // Visual Adjustments
   contrastLevel: number // 0-200
   highlightLinks: boolean
+  highlightLinksStyle: 'border' | 'background' | 'underline' // New
   textSize: number // 0.8-2.0
   textSpacing: number // 1.0-2.0
   lineHeight: number // 1.0-3.0
   letterSpacing: number // 0-0.2
+  wordSpacing: number // 0-0.5em, New
+  paragraphSpacing: number // 0-2.0, New
 
   // Advanced Visual
   colorBlindnessFilter: "none" | "protanopia" | "deuteranopia" | "tritanopia"
   darkMode: boolean
   reducedMotion: boolean
   focusIndicator: boolean
+  focusRing: boolean // New
 
   // Behavior Controls
   pauseAnimations: boolean
+  animationLevel: AnimationLevel // New
   hideImages: boolean
   dyslexiaFont: boolean
   readingMode: boolean
 
   // Interface Tools
   cursorSize: number // 1-3
+  cursorStyle: CursorStyle
+  customCursorUrl?: string // URL to custom cursor file
   showTooltips: boolean
+  tooltipMode: TooltipMode
   pageStructure: boolean
+  headingLevels: boolean
+  landmarkRoles: boolean
   keyboardNavigation: boolean
 
   // Advanced Features
@@ -32,6 +46,13 @@ export interface AccessibilitySettings {
   aiSuggestions: boolean
   accessibilityScore: boolean
   customTheme: string
+  
+  // New Features
+  linkUnderline: boolean
+  buttonFocus: boolean
+  formLabelVisibility: boolean
+  reduceTransparency: boolean
+  animationControls: boolean
 }
 
 export interface AccessibilityPreset {

@@ -83,6 +83,126 @@ A modern, AI-powered accessibility widget that enhances web accessibility with r
 3. **Open your browser**
    Visit `http://localhost:3000` to see the application in action.
 
+## 🛠️ Setup Instructions
+
+### Prerequisites
+
+- Node.js (v16 or later)
+- npm or yarn
+- Python 3.8+
+- PostgreSQL (recommended) or SQLite
+- Redis (for Celery task queue)
+
+### Backend Setup
+
+1. **Virtual Environment**
+   ```bash
+   # Create and activate virtual environment
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   cd accessibility_backend
+   pip install -r requirements.txt
+   ```
+
+3. **Database Setup**
+   ```bash
+   # Apply migrations
+   python manage.py migrate
+   
+   # Create superuser (optional)
+   python manage.py createsuperuser
+   ```
+
+4. **Environment Variables**
+   Create a `.env` file in the `accessibility_backend` directory:
+   ```env
+   DEBUG=True
+   SECRET_KEY=your-secret-key-here
+   <!-- DATABASE_URL=postgresql://user:password@localhost:5432/accessibility_db --> optional as we set it to default sqlite
+   CELERY_BROKER_URL=redis://localhost:6379/0
+   ```
+
+### Frontend Setup
+
+1. **Install Dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+2. **Environment Variables**
+   Create a `.env.local` file in the root directory:
+   ```env
+   NEXT_PUBLIC_API_URL=http://localhost:8000
+   NEXT_PUBLIC_GA_TRACKING_ID=your-ga-tracking-id
+   ```
+
+### Running the Application
+
+1. **Start Backend Server**
+   ```bash
+   cd accessibility_backend
+   python manage.py runserver
+   ```
+
+2. **Start Frontend Development Server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+3. **Start Celery Worker** (in a new terminal)
+   ```bash
+   cd accessibility_backend
+   celery -A accessibility_backend worker -l info
+   ```
+
+4. **Access the Application**
+   - Frontend: http://localhost:3000
+   - Django Admin: http://localhost:8000/admin
+
+## 🏗️ Implementation Choices
+
+### Frontend Architecture
+- **Next.js**: Chosen for its server-side rendering capabilities, API routes, and seamless React integration.
+- **TypeScript**: Provides static typing for better code quality and developer experience.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development and consistent design.
+- **Zustand**: Lightweight state management solution for global state needs.
+- **React Hook Form**: For efficient form handling and validation.
+- **Framer Motion**: For smooth animations and transitions.
+
+### Backend Architecture
+- **Django REST Framework**: Robust framework for building RESTful APIs with excellent documentation.
+- **PostgreSQL**: Production-ready relational database with JSON field support.
+- **Celery & Redis**: For handling asynchronous tasks like accessibility scanning and reporting.
+- **JWT Authentication**: Secure token-based authentication system.
+- **Django CORS Headers**: For handling cross-origin requests in development.
+
+### Accessibility Features
+- **WCAG 2.1 Compliance**: All components meet AA compliance standards.
+- **Keyboard Navigation**: Full keyboard support for all interactive elements.
+- **ARIA Attributes**: Proper ARIA labels and roles for screen readers.
+- **Color Contrast**: Dynamic contrast adjustment with WCAG 2.1 AA compliance.
+- **Reduced Motion**: Respects user's motion preferences.
+
+### Performance Optimizations
+- **Code Splitting**: Automatic code splitting via Next.js.
+- **Lazy Loading**: Components and assets are loaded on demand.
+- **Caching**: Implemented at multiple levels (browser, CDN, database).
+- **Image Optimization**: Automatic image optimization with Next.js Image component.
+
+### Security Measures
+- **CSRF Protection**: Enabled for all state-changing operations.
+- **CORS**: Properly configured for production and development environments.
+- **Content Security Policy**: Implemented to prevent XSS attacks.
+- **Rate Limiting**: Implemented on sensitive endpoints.
+
 ## 🛠️ Usage
 
 1. Click the accessibility icon in the bottom-right corner to open the widget
